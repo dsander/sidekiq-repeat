@@ -125,7 +125,7 @@ module TestHelper
 
       @boss = MiniTest::Mock.new
       2.times { @boss.expect(:options, {:queues => ['default'] }, []) }
-      @processor = Sidekiq::Processor.new(@boss)
+      @processor = Sidekiq::Processor.new(@boss, queues: ['default'])
       startup_sidekiq! if startup_sidekiq
     end
 
